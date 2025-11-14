@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Gymgeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Toast Notification Styling */
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      margin-left: -125px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      border-radius: 2px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      left: 50%;
+      bottom: 30px;
+      font-size: 17px;
+    }
+
+    #toast.show {
+      visibility: visible;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @keyframes fadein {
+      from { bottom: 0; opacity: 0; }
+      to { bottom: 30px; opacity: 1; }
+    }
+
+    @keyframes fadeout {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    /* Mobile Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+        border-left: 2px solid red;
+      }
+
+      .nav-links a {
+        padding: 1rem;
+        color: #fff;
+        text-align: center;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <div class="hamburger">&#9776;</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Workout Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="calorie.html">Calories</a>
+      <a href="reps.html">Reps</a>
+<a href="team.html">Team</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact container">
+    <h2>Get in Touch</h2>
+    <p class="intro">
+      Have questions, ideas, or feedback? We’d love to hear from you. 
+      Send us a quick message and our team will reply soon.
+    </p>
+
+    <form id="contactForm" class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="cta-button">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> contact@gymgeniuz.ng</p>
+      <div class="socials">
+        <a href="#" title="Twitter">🐦</a>
+        <a href="#" title="LinkedIn">💼</a>
+        <a href="#" title="TikTok">🎵</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Message sent successfully!</div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GymGeniuz | Built by Intern Web Group 15</p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+
+    // Toast notification
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+    }
+
+    // Contact form handler
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      showToast("Message sent successfully!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>

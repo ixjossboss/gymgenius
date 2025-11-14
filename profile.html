@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile | Gymgenius</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <div class="hamburger">&#9776;</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="calorie.html">Calories</a>
+      <a href="reps.html">Reps</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html" class="active">Profile</a>
+    </nav>
+  </header>
+
+  
+  <section class="profile container">
+    <h2>Your Profile</h2>
+    <div class="profile-card">
+      <p><strong>Username:</strong> <span id="profileName">Guest</span></p>
+    </div>
+  </section>
+
+  
+  <footer>
+    <p>© 2025 GymGeniuz | Designed by Intern Web Group 15</p>
+  </footer>
+
+  <script>
+    
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+
+    // Load user info from localStorage
+    try {
+      const userData = JSON.parse(localStorage.getItem("gymgeniusUser"));
+      if (userData && userData.username) {
+        document.getElementById("profileName").textContent = userData.username;
+      } else {
+        document.getElementById("profileName").textContent = "Not Logged In";
+      }
+    } catch (e) {
+      // In case of an error (e.g., corrupted localStorage), fallback to default
+      document.getElementById("profileName").textContent = "Not Logged In";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | GymGeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .value-card {
+      background-color: #111;
+      border-left: 5px solid #ff0000;
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(255, 0, 0, 0.3);
+    }
+    .value-card span {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .value-card h3 {
+      color: #ff0000;
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+    .value-card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .cta-center {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .about-section {
+      padding: 3rem 1rem;
+    }
+    .about-section h2 {
+      color: #ff0000;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .about-section p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="calorie.html">Calories</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Empowering Fitness Through Simplicity</h1>
+    <p>We built GymGeniuz with one goal — to make tracking workouts fast, private, and motivating.</p>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="container about-section">
+    <h2>Our Story</h2>
+    <p>
+      GymGeniuz was created by group 15 of web developers during a world bank web development internship project.
+      What started as a simple fitness logger evolved into a sleek, no-login tool for people who just want to
+      track their progress without friction.
+    </p>
+    
+    <h2>Our Core Values</h2>
+    <div class="values">
+      <div class="value-card">
+        <span>🥑</span>
+        <h3>Consistency</h3>
+        <p>Progress comes from showing up. Every rep, every log, every small win counts.</p>
+      </div>
+      <div class="value-card">
+        <span>🍎</span>
+        <h3>Simplicity</h3>
+        <p>No accounts, no clutter. Just clean design and tools that get out of your way.</p>
+      </div>
+      <div class="value-card">
+        <span>🍉</span>
+        <h3>Empowerment</h3>
+        <p>GymGeniuz is made to help you take control of your routine not complicate it.</p>
+      </div>
+    </div>
+    
+    <div class="cta-center">
+      <a href="dashboard.html" class="cta-button">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GymGeniuz | Designed by Group 15 | All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+      
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

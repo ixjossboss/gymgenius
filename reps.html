@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reps Counter | GymGeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <div class="hamburger">&#9776;</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="calorie.html">Calories</a>
+      <a href="reps.html" class="active">Reps</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <section class="container">
+    <h2>Reps Tracker</h2>
+    <p style="text-align:center; color:#bbb; margin-bottom:1rem;">
+      Enter your workout details to calculate your total repetitions.
+    </p>
+
+    <form id="repsForm">
+      <input type="text" id="exerciseName" placeholder="Exercise Name (e.g. Push-ups)" required />
+      <input type="number" id="sets" placeholder="Number of Sets" required />
+      <input type="number" id="reps" placeholder="Reps per Set" required />
+      <button type="submit">Calculate Total Reps</button>
+    </form>
+
+    <div class="card" id="repsResult"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GymGeniuz | Built by Intern Group 15</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Hamburger Menu Toggle
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+
+    // Reps Calculator
+    document.getElementById("repsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const sets = parseInt(document.getElementById("sets").value);
+      const reps = parseInt(document.getElementById("reps").value);
+      const exercise = document.getElementById("exerciseName").value.trim();
+
+      if (isNaN(sets) || isNaN(reps) || sets <= 0 || reps <= 0) {
+        document.getElementById("repsResult").innerHTML = "<p style='color:red;'>Please enter valid numbers.</p>";
+        return;
+      }
+
+      const total = sets * reps;
+      document.getElementById("repsResult").innerHTML = `
+        <h3>${exercise || "Your Exercise"}</h3>
+        <p>Total Repetitions Completed: <strong>${total}</strong></p>
+      `;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team | GymGeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      /* When screen size is small, hide links by default */
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+        border-left: 2px solid red;
+      }
+
+      .nav-links a {
+        padding: 1rem;
+        color: #fff;
+        text-align: center;
+      }
+
+      /* Show hamburger icon */
+      .hamburger {
+        display: block;
+      }
+
+      /* Show the nav links when hamburger is clicked */
+      .nav-links.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <div class="hamburger">&#9776;</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="calorie.html">Calories</a>
+      <a href="reps.html">Reps</a>
+      <a href="contact.html">Contact</a>
+      <a href="team.html" class="active">Team</a>
+    </nav>
+  </header>
+
+  
+  <section class="team container">
+    <h2 class="section-title">Meet the Team</h2>
+    <p style="text-align:center; color:#bbb; margin-bottom:2rem;">
+      The passionate developers and designers behind GymGeniuz.
+    </p>
+
+    <div class="grid team-grid">
+      <div class="card team-card">
+        <img src="assets/michael.jpg" alt="Omowa Michael Adebayo" class="team-photo" />
+        <h3>Omowa Michael Adebayo</h3>
+        <p class="role">Group Leader</p>
+        <ul class="responsibilities">
+          <li>UI integration</li>
+          <li>Layout design</li>
+          <li>Team coordination</li>
+        </ul>
+        <blockquote>“Vision drives execution.”</blockquote>
+      </div>
+
+      <div class="card team-card">
+        <img src="assets/kolawole.jpg" alt="Kolawole Moradekemi" class="team-photo" />
+        <h3>Kolawole Moradekemi</h3>
+        <p class="role">Frontend Developer</p>
+        <ul class="responsibilities">
+          <li>Calorie tracker UI</li>
+        </ul>
+        <blockquote>“Fitness starts with the right fuel.”</blockquote>
+      </div>
+
+      <div class="card team-card">
+        <img src="assets/babalola.jpg" alt="Babalola Oreoluwa Ebenezer" class="team-photo" />
+        <h3>Babalola Oreoluwa Ebenezer</h3>
+        <p class="role">Frontend Developer</p>
+        <ul class="responsibilities">
+          <li>Workout logging interface</li>
+        </ul>
+        <blockquote>“A strong UI builds stronger habits.”</blockquote>
+      </div>
+
+      <div class="card team-card">
+        <img src="assets/lilian.jpg" alt="Lilian Chimaobi Nwacukwu" class="team-photo" />
+        <h3>Lilian Chimaobi Nwacukwu</h3>
+        <p class="role">Frontend Tester</p>
+        <ul class="responsibilities">
+          <li>Frontend responsiveness testing</li>
+        </ul>
+        <blockquote>“Good design adapts. Great design endures.”</blockquote>
+      </div>
+
+      <div class="card team-card">
+        <img src="assets/faruk.jpg" alt="Balogun Faruk" class="team-photo" />
+        <h3>Balogun Faruk</h3>
+        <p class="role">Frontend QA Debugger</p>
+        <ul class="responsibilities">
+          <li>Frontend QA debugging</li>
+        </ul>
+        <blockquote>“Every bug fixed is a rep toward perfection.”</blockquote>
+      </div>
+    </div>
+
+    <div class="tools">
+      <p>Built with: <strong>HTML, CSS, JavaScript</strong></p>
+    </div>
+  </section>
+
+  
+  <footer>
+    <p>© 2025 GymGeniuz | Designed by Intern Web Group 15</p>
+  </footer>
+
+  
+  <script>
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

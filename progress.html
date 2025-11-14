@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progress | GymGeniuz</title>
+  <meta name="description" content="Track your workout progress and visualize your performance trends on GymGeniuz." />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .progress-grid canvas {
+      max-width: 100%;
+      height: 250px !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Workout Logger</a>
+      <a href="progress.html" class="active">Progress</a>
+<a href="calorie.html">Calories</a>
+      <a href="reps.html">Reps</a>
+<a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <!-- Progress Section -->
+  <section class="container" style="padding:6rem 0;">
+    <h1 style="text-align:center; font-family:'Poppins',sans-serif; margin-bottom:3rem; color:#ff0000;">Your Progress Overview</h1>
+    <div class="progress-grid">
+      <!-- Chart 1 -->
+      <div class="card">
+        <h2>Workout Frequency</h2>
+        <canvas id="workoutFrequencyChart"></canvas>
+      </div>
+      <!-- Chart 2 -->
+      <div class="card">
+        <h2>Average Duration (Minutes)</h2>
+        <canvas id="durationChart"></canvas>
+      </div>
+      <!-- Chart 3 -->
+      <div class="card">
+        <h2>Calories Burned Over Time</h2>
+        <canvas id="caloriesChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GymGeniuz | Designed by Group 15 | All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile navigation
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Chart.js Demo Data with red theme
+    const ctx1 = document.getElementById('workoutFrequencyChart');
+    const ctx2 = document.getElementById('durationChart');
+    const ctx3 = document.getElementById('caloriesChart');
+
+    // Common chart options for dark theme
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#fff'
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#ccc' },
+          grid: { color: '#333' }
+        },
+        x: {
+          ticks: { color: '#ccc' },
+          grid: { color: '#333' }
+        }
+      }
+    };
+
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Workouts',
+          data: [2, 1, 3, 0, 2, 2, 1],
+          backgroundColor: '#ff0000',
+          borderColor: '#ff4d4d',
+          borderWidth: 1
+        }]
+      },
+      options: chartOptions
+    });
+
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        datasets: [{
+          label: 'Average Duration',
+          data: [30, 45, 50, 60],
+          borderColor: '#ff0000',
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: '#ff4d4d',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2
+        }]
+      },
+      options: chartOptions
+    });
+
+    new Chart(ctx3, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Calories Burned',
+          data: [800, 1200, 1400, 1800, 2100],
+          borderColor: '#ff0000',
+          fill: true,
+          backgroundColor: 'rgba(255, 0, 0, 0.2)',
+          tension: 0.4,
+          pointBackgroundColor: '#ff4d4d',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2
+        }]
+      },
+      options: chartOptions
+    });
+  </script>
+</body>
+</html>

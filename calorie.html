@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calorie Tracker | GymGeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html">Workout Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="calorie.html" class="active">Calories</a>
+      <a href="reps.html">Reps</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Calorie Tracker Section -->
+  <section class="container calorie-section">
+    <h2>Calorie Burn Estimator</h2>
+    <p>Enter your workout details below to estimate your calorie burn.</p>
+
+    <form id="calorieForm" class="calorie-form">
+      <input type="text" id="exerciseType" placeholder="Exercise Type (e.g., Running)" required />
+      <input type="number" id="duration" placeholder="Duration (minutes)" required />
+      <button type="submit">Estimate Calories</button>
+    </form>
+
+    <div class="card" id="calorieResult"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GymGeniuz | All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Hamburger Menu
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+    });
+
+    // Calorie Estimation
+    document.getElementById("calorieForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const type = document.getElementById("exerciseType").value.toLowerCase().trim();
+      const duration = parseInt(document.getElementById("duration").value);
+      let calories = 0;
+
+      if (type.includes("run")) calories = duration * 10;
+      else if (type.includes("cycle")) calories = duration * 8;
+      else if (type.includes("lift")) calories = duration * 6;
+      else if (type.includes("walk")) calories = duration * 4;
+      else calories = duration * 5;
+
+      const result = document.getElementById("calorieResult");
+      result.textContent = `Estimated Calories Burned: ${calories} kcal`;
+    });
+  </script>
+</body>
+</html>

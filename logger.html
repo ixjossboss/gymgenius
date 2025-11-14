@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workout Logger | GymGeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .logger-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .workout-entry {
+      background-color: #000;
+      border-left: 3px solid #ff4d4d;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .workout-entry strong {
+      color: #ff0000;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="logger.html" class="active">Workout Logger</a>
+      <a href="progress.html">Progress</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <!-- Logger Section -->
+  <section class="container" style="padding:6rem 0;">
+    <h1 style="text-align:center; font-family:'Poppins',sans-serif; margin-bottom:2rem; color:#ff0000;">Workout Logger</h1>
+    <div class="logger-grid">
+      <!-- Log Form -->
+      <div class="card">
+        <h2>Log a New Workout</h2>
+        <form id="workoutForm">
+          <input type="text" id="exercise" placeholder="Exercise Name" required />
+          <input type="number" id="sets" placeholder="Sets" required />
+          <input type="number" id="reps" placeholder="Reps" required />
+          <input type="number" id="duration" placeholder="Duration (minutes)" required />
+          <button type="submit">Log Workout</button>
+        </form>
+      </div>
+      <!-- Log Display -->
+      <div class="card">
+        <h2>Recent Logs</h2>
+        <div id="workoutList" style="margin-top: 1rem;">
+          <p style="opacity:0.7; color:#ccc;">No workouts logged yet. Start by adding one!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GymGeniuz | Designed by Group 15 | All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Workout logging
+    const form = document.getElementById('workoutForm');
+    const list = document.getElementById('workoutList');
+    
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const exercise = document.getElementById('exercise').value.trim();
+      const sets = document.getElementById('sets').value;
+      const reps = document.getElementById('reps').value;
+      const duration = document.getElementById('duration').value;
+      
+      if (exercise && sets && reps && duration) {
+        // Clear the "No workouts" message if it exists
+        if (list.querySelector('p')) {
+          list.innerHTML = '';
+        }
+        
+        const entry = document.createElement('div');
+        entry.classList.add('workout-entry');
+        entry.innerHTML = `
+          <strong>${exercise}</strong><br>
+          ${sets} sets × ${reps} reps<br>
+          Duration: ${duration} min
+        `;
+        list.prepend(entry);
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

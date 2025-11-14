@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | GymGeniuz</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Geniuz</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="logger.html">Workout Logger</a>
+      <a href="progress.html">Progress</a>
+<a href="calorie.html">Calories</a>
+      <a href="reps.html">Reps</a>
+<a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  
+  <section class="container" style="padding: 6rem 0;">
+    <h1 style="text-align:center; font-family:'Poppins',sans-serif; margin-bottom:2rem; color:#ff0000;">Your Dashboard</h1>
+    <div class="grid">
+      
+      <div class="card">
+        <h3>Recent Workouts</h3>
+        <p>View your last 5 logged workouts at a glance. Stay on track and monitor your habits.</p>
+        <a href="logger.html" class="cta-button" style="display:inline-block;margin-top:1rem;">View Logs</a>
+      </div>
+      
+      <div class="card">
+        <h3>Performance Trends</h3>
+        <p>See your strength, endurance, and calorie burn trends over time.</p>
+        <a href="progress.html" class="cta-button" style="display:inline-block;margin-top:1rem;">View Charts</a>
+      </div>
+      
+      <div class="card">
+        <h3>Calories Burned</h3>
+        <p>Quickly estimate calories based on your workout intensity and duration.</p>
+        <a href="logger.html" class="cta-button" style="display:inline-block;margin-top:1rem;">Estimate</a>
+      </div>
+      
+      <div class="card">
+        <h3>Personal Profile</h3>
+        <p>Customize your preferences, track goals, and view your overall performance stats.</p>
+        <a href="profile.html" class="cta-button" style="display:inline-block;margin-top:1rem;">Open Profile</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="container" style="margin-top:4rem; text-align:center; padding:3rem 1rem; background-color:#111; border-left:5px solid #ff0000; border-radius:8px;">
+    <h2 style="color:#ff0000; font-size:2rem; margin-bottom:1.5rem;">Your Weekly Summary</h2>
+    <p style="color:#ccc; max-width:800px; margin:0 auto; font-size:1.1rem;">
+      You've completed <strong style="color:#ff4d4d;">4 workouts</strong> this week, totaling <strong style="color:#ff4d4d;">220 minutes</strong> and <strong style="color:#ff4d4d;">1,850 calories</strong> burned. Keep the momentum going!
+    </p>
+  </section>
+
+  
+  <footer>
+    <p>© 2025 GymGeniuz | Designed by Web Group 15</p>
+  </footer>
+
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
